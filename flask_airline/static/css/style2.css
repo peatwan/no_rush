@@ -1,0 +1,41 @@
+*{
+    list-style:none;
+}
+
+.flight_info li{
+    border: 4px solid gainsboro;
+    box-shadow: 5px 5px 10px 2px lightgray;
+    margin: 20px auto;
+    border-radius: 5px;
+    text-align: center;
+    border-left: 15px groove lawngreen;
+    position: relative;
+}
+.flight_info h1{
+    margin: 10px;
+}
+ .flight_info p{
+    margin: 5px;
+     font-size: 25px;
+}
+.flight_info span{
+    margin: 5px;
+    /*margin-bottom: 20px;*/
+     font-size: 15px;
+}
+.content_info{
+    /*background: lightgray;*/
+    min-height: 500px;
+}
+
+.icon_info{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background: url(../images/hangkongfeiji.jpg);
+    box-shadow: 0 0 2px 2px grey;
+    background-size: 50px 50px;
+    position: absolute;
+    left: 18px;
+    top:10px
+}
