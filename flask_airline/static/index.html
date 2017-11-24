@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>简洁大气旅游机票在线预订门户模板</title>
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Govihar Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //Custom Theme files -->
+<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+<link href="css/style2.css" type="text/css" rel="stylesheet" media="all">
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+<link type="text/css" rel="stylesheet" href="css/JFFormStyle-1.css" />
+<!-- js -->
+<script src="js/jquery.min.js"></script>
+<script src="js/modernizr.custom.js"></script>
+<!-- //js -->
+<!-- fonts -->
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,700,500italic,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<!-- //fonts -->	
+<script type="text/javascript">
+		$(document).ready(function () {
+			$('#horizontalTab').easyResponsiveTabs({
+				type: 'default', //Types: default, vertical, accordion           
+				width: 'auto', //auto or any width like 600px
+				fit: true   // 100% fit in a container
+			});
+		});
+	</script>
+<!--pop-up-->
+<script src="js/menu_jquery.js"></script>
+<script>
+
+    function submit() {
+
+       var data={"date":$("#date").val()}
+       $.ajax({
+
+           type: 'POST',
+           url: /search/,
+           data: JSON.stringify(data),
+           contentType: 'application/json; charset=UTF-8',
+           dataType: 'json',
+            success: function(data) {
+
+                alert("done")
+
+      },
+           error: function(xhr, type) {
+
+               alert("error")
+    }
+
+
+
+
+
+
+
+       })
+
+    }
+
+
+</script>
+<!--//pop-up-->	
+</head>
+<body>
+	<!--header-->
+	<div class="header">
+		<div class="container">
+			<div class="header-grids">
+				<div class="logo">
+					<h1>Flight delay Check</h1>
+				</div>
+				<!--navbar-header-->
+				<div class="header-dropdown">
+					<div class="emergency-grid">
+						<ul>
+							<li>source : </li>
+							<li class="call">American flight data</li>
+						</ul>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="nav-top">
+				<div class="top-nav">
+					<span class="menu"><img src="images/menu.png" alt="" /></span>
+					<ul class="nav1">
+
+					</ul>
+					<div class="clearfix"> </div>
+					<!-- script-for-menu -->
+						<!-- /script-for-menu -->
+				</div>
+
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!--//header-->
+	<!-- banner -->
+	<div class="banner">
+		<!-- container -->
+		<div class="container">
+			<div class="col-md-4 banner-left">
+				<section class="slider2">
+					<div class="flexslider">
+						<ul class="slides">
+							<li>
+								<div class="slider-info">
+									<img src="images/1.jpg" alt="">
+								</div>
+							</li>
+							<li>
+								<div class="slider-info">
+									<img src="images/2.jpg" alt="">
+								</div>
+							</li>
+							<li>	
+								<div class="slider-info">
+									<img src="images/3.jpg" alt="">
+								</div>
+							</li>
+							<li>	
+								<div class="slider-info">
+									<img src="images/4.jpg" alt="">
+								</div>
+							</li>
+							<li>	
+								<div class="slider-info">
+									<img src="images/2.jpg" alt="">
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<!--FlexSlider-->
+			</div>
+
+			<div class="col-md-8 banner-right">
+				<div class="sap_tabs">	
+					<div class="booking-info">
+						<h2>Check Domestic Flight Delay Information</h2>
+					</div>
+					 <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+						  <ul class="resp-tabs-list">
+							  <li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>One way</span></li>
+
+							  <div class="clearfix"></div>
+						  </ul>		
+						  <!---->		  	 
+						 <div class="resp-tabs-container">
+							<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+									<div class="facts">
+										<div class="booking-form">
+											<!---strat-date-piker---->
+											<script>
+												$(function() {
+													$( "#datepicker,#datepicker1" ).datepicker();
+												});
+											</script>
+											<!---/End-date-piker---->
+											<!-- Set here the key for your domain in order to hide the watermark on the web server -->
+											
+											<div class="online_reservation">
+													<div class="b_room">
+														<div class="booking_room">
+															<div class="reservation">
+																<ul>		
+																	<li  class="span1_of_1 desti">
+																		 <h5>Flying from</h5>
+																		 <div class="book_date">
+																			 <form>
+																				<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+																				<input type="text" placeholder="Type Departure City" class="typeahead1 input-md form-control tt-input" required="">
+																			 </form>
+																		 </div>					
+																	 </li>
+																	 <li  class="span1_of_1 left desti">
+																		 <h5>Flying to</h5>
+																		 <div class="book_date">
+																		 <form>
+																			<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+																			<input type="text" placeholder="Type Destination City" class="typeahead1 input-md form-control tt-input" required="">
+																		 </form>
+																		 </div>		
+																	 </li>
+																	 <div class="clearfix"></div>
+																</ul>
+															</div>
+															<div class="reservation">
+																<ul>	
+																	 <li  class="span1_of_1">
+																		 <h5>Departure</h5>
+																		 <div class="book_date">
+																		 <form>
+																			<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+																			<input type="date" id="date" value="Select date" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Select date';}">
+																		 </form>
+																		 </div>		
+																	 </li>
+																	 <li  class="span1_of_1 left">
+																		 <h5>Airline</h5>
+																		 <div class="book_date">
+																			 <form>
+																				<span class="airline" aria-hidden="true"></span>
+																				<select  onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Select date';}">
+                                                                                <option>AA</option>
+                                                                                <option>BB</option>
+                                                                                <option>CC</option>
+
+
+                                                                                </select>
+																			</form>
+																		 </div>
+																	 </li>
+
+
+
+																	 <div class="clearfix"></div>
+																</ul>
+															</div>
+															<div class="reservation">
+																<ul>	
+																	 <li class="span1_of_3">
+																			<div class="date_btn">
+																				<form>
+																					<input type="button" id="submit" value="Search" onclick="submit()" />
+																				</form>
+																			</div>
+																	 </li>
+																	 <div class="clearfix"></div>
+																</ul>
+															</div>
+														</div>
+														<div class="clearfix"></div>
+													</div>
+											</div>
+											<!---->
+										</div>	
+									</div>
+							</div>		
+							<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
+								<div class="facts">
+										<div class="booking-form">
+											<!---strat-date-piker---->
+											<link rel="stylesheet" href="css/jquery-ui.css" />
+											<script src="js/jquery-ui.js"></script>
+													  <script>
+															  $(function() {
+																$( "#datepicker,#datepicker1" ).datepicker();
+															  });
+													  </script>
+
+											<!---/End-date-piker---->
+											<div class="online_reservation">
+													<div class="b_room">
+														<div class="booking_room">
+															<div class="reservation">
+																<ul>		
+																	<li  class="span1_of_1 desti">
+																		 <h5>Flying from</h5>
+																		 <div class="book_date">
+																			 <form>
+																				<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+																				<input type="text" placeholder="Type Departure City" class="typeahead1 input-md form-control tt-input" required="">
+																			 </form>
+																		 </div>					
+																	 </li>
+																	 <li  class="span1_of_1 left desti">
+																		 <h5>Flying to</h5>
+																		 <div class="book_date">
+																		 <form>
+																			<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+																			<input type="text" placeholder="Type Destination City" class="typeahead1 input-md form-control tt-input" required="">
+																		 </form>
+																		 </div>		
+																	 </li>
+																	 <div class="clearfix"></div>
+																</ul>
+															</div>
+															<div class="reservation">
+																<ul>	
+																	 <li  class="span1_of_1">
+																		 <h5>Departure</h5>
+																		 <div class="book_date">
+																		 <form>
+																			<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+																			<input type="date" id="date" value="Select date" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Select date';}">
+																		</form>
+																		 </div>		
+																	 </li>
+																	 <li class="span1_of_1 left">
+																		 <h5>Adults (18+)</h5>
+																		 <!----------start section_room----------->
+																		 <div class="section_room">
+																			  <select id="country" onChange="change_country(this.value)" class="frm-field required">
+																					<option value="null">1</option>
+																					<option value="null">2</option>         
+																					<option value="AX">3</option>
+																					<option value="AX">4</option>
+																					<option value="AX">5</option>
+																					<option value="AX">6</option>
+																			  </select>
+																		 </div>	
+																	</li>
+																	<li class="span1_of_1 left tab-children">
+																		 <h5>Children (0-17)</h5>
+																		 <!----------start section_room----------->
+																		 <div class="section_room">
+																			  <select id="country" onChange="change_country(this.value)" class="frm-field required">
+																					<option value="null">1</option>
+																					<option value="null">2</option>         
+																					<option value="AX">3</option>
+																					<option value="AX">4</option>
+																					<option value="AX">5</option>
+																					<option value="AX">6</option>
+																			  </select>
+																		 </div>	
+																	</li>
+																	<li class="span1_of_1 economy">
+																		 <h5>Class</h5>
+																		 <!----------start section_room----------->
+																		 <div class="section_room">
+																			  <select id="country" onChange="change_country(this.value)" class="frm-field required">
+																					<option value="null">Economy</option>
+																					<option value="null">Business</option>     
+																			  </select>
+																		 </div>	
+																	</li>
+																	 <div class="clearfix"></div>
+																</ul>
+															</div>
+															<div class="reservation">
+																<ul>	
+																	 <li class="span1_of_3">
+																			<div class="date_btn">
+																				<form>
+																					<input type="submit" value="Search" />
+																				</form>
+																			</div>
+																	 </li>
+																	 <div class="clearfix"></div>
+																</ul>
+															</div>
+														</div>
+														<div class="clearfix"></div>
+													</div>
+											</div>
+											<!---->
+										</div>	
+								</div>
+							</div> 			        					            	      
+						  </div>	
+					  </div>	
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+		<!-- //container -->
+	</div>
+	<!-- //banner -->
+	<div class="move-text">
+		<div class="marquee">Register your hotel with us free of cost.<a href="signup.html">Here</a></div>
+		<script type="text/javascript" src="js/jquery.marquee.min.js"></script>
+        <script>
+		  $('.marquee').marquee({ pauseOnHover: true });
+		  //@ sourceURL=pen.js
+		</script>
+	</div>
+	<!-- banner-bottom -->
+	<div class="banner-bottom">
+		<!-- container -->
+		<div class="container">
+			<div class="banner-bottom-info">
+				<h3>您的查找结果:</h3>
+			</div>
+			<div class="banner-bottom-grids">
+				<div class= "content_info">
+					<ul class="flight_info">
+						<li>
+							<div class="icon_info"></div>
+							<h1>机票价格：北京首都国际机场 (PEK) - 上海浦东机场 (PVG)</h1>
+							<p>1 成人. 2017年11月21日 星期二, 20:20 - 2017年11月21日 星期二, 22:35.</p>
+							<span>税费（以出票税率为准，或有调整）</span>
+						</li>
+						<li>
+							<div class="icon_info"></div>
+							<h1>机票价格：北京首都国际机场 (PEK) - 上海浦东机场 (PVG)</h1>
+							<p>1 成人. 2017年11月21日 星期二, 20:20 - 2017年11月21日 星期二, 22:35.</p>
+							<span>税费（以出票税率为准，或有调整）</span>
+						</li>
+						<li>
+							<div class="icon_info"></div>
+							<h1>机票价格：北京首都国际机场 (PEK) - 上海浦东机场 (PVG)</h1>
+							<p>1 成人. 2017年11月21日 星期二, 20:20 - 2017年11月21日 星期二, 22:35.</p>
+							<span>税费（以出票税率为准，或有调整）</span>
+						</li>
+						<li>
+							<div class="icon_info"></div>
+							<h1>机票价格：北京首都国际机场 (PEK) - 上海浦东机场 (PVG)</h1>
+							<p>1 成人. 2017年11月21日 星期二, 20:20 - 2017年11月21日 星期二, 22:35.</p>
+							<span>税费（以出票税率为准，或有调整）</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+				</div>
+
+
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		<!-- //container -->
+	</div>
+	<!-- //banner-bottom -->
+	<!-- popular-grids -->
+	<div class="popular-grids">
+		<!-- container -->
+
+		<!-- //container -->
+	</div>
+	<!-- popular-grids -->
+	<!-- footer -->
+	<div class="footer">
+		<!-- container -->
+		<div class="container">
+
+		</div>
+		<!-- //container -->
+	</div>
+	<!-- //footer -->
+	<div class="footer-bottom-grids">
+		<!-- container -->
+		<div class="container">
+		</div>
+	</div>
+	<script defer src="js/jquery.flexslider.js"></script>
+	<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
+	<script src="js/jquery-ui.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+	<script type="text/javascript">
+
+			$(window).load(function(){
+			$('.flexslider').flexslider({
+			animation: "slide",
+			start: function(slider){
+			$('body').removeClass('loading');
+			}
+			});
+		});
+	</script>		
+</body>
+</html>
