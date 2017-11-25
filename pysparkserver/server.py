@@ -4,6 +4,8 @@ from pyspark.sql.functions import *
 import socket
 import threading
 import time
+import json
+
 sc=SparkContext('local')
 
 spark = SparkSession \
@@ -29,11 +31,12 @@ def list2str(ls):
 
 
 def parse_and_do(line):
-    #A stands for retrieving the first three lines of data from the airline table
-    if line=='A':
-        res=reader('D:\\MSBD5003\\flights.csv')
-        return str(res)
+    #get stands for retrieving the first three lines of data from the airline table
+    string=json.loads(line)
 
+    method=string['method']
+    if method=='get':
+        return {'AA':5,'BB':6}
 
 
 
@@ -42,17 +45,18 @@ def parse_and_do(line):
 def tcplink(sock,addr):
 
     print('handling new connection')
-    sock.send(b'connected to pyspark server')
+
     while True:
         data = sock.recv(1024)
         data1=bytes.decode(data)
         result=parse_and_do(data1)
+        result=json.dumps(result)
         time.sleep(1)
-        if data1 == 'exit' or not data1:
+        if data1 == 'done' or not data1:
             break
-        send_data='Hello '+data1
-        sock.send(str.encode(send_data))
-    #sock.close()
+
+        sock.send(str.encode(result))
+    sock.close()
 
 
 
@@ -62,6 +66,10 @@ def tcplink(sock,addr):
 
 
 if __name__=='__main__':
+
+
+
+
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind(('127.0.0.1', 9999))
     s.listen(5)

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title></title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="static/css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="static/css/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="static/css/style.css" type="text/css" media="all">
+<script type="text/javascript" src="static/js/jquery-1.4.2.js" ></script>
+<script type="text/javascript" src="static/js/cufon-yui.js"></script>
+<script type="text/javascript" src="static/js/cufon-replace.js"></script>
+<script type="text/javascript" src="static/js/Myriad_Pro_italic_600.font.js"></script>
+<script type="text/javascript" src="static/js/Myriad_Pro_italic_400.font.js"></script>
+<script type="text/javascript" src="static/js/Myriad_Pro_400.font.js"></script>
+
+<style type="text/css">
+table.altrowstable {
+    font-family: verdana,arial,sans-serif;
+    font-size:11px;
+    color:#333333;
+    border-width: 1px;
+    border-color: #a9c6c9;
+    border-collapse: collapse;
+}
+table.altrowstable th {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #a9c6c9;
+}
+table.altrowstable td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #a9c6c9;
+}
+.oddrowcolor{
+    background-color:#d4e3e5;
+}
+.evenrowcolor{
+    background-color:#c3dde0;
+}
+</style>
+
+
+
+
+
+<script>
+
+   function send(){
+
+       origin=$("#origin").val()
+       dest=$("#destination").val()
+       day=$("#day").val()
+       time=$("#time").val()
+
+       var data={origin:origin,dest:dest,day:day,time:time}
+
+
+       $("#result").empty()
+       $("#result").append('loading...')
+       $.ajax({
+
+           url:'/search',
+           type:'POST',
+           data:data,
+           dataType:'text',
+           success:function(data){
+
+               res=eval('('+data+')')
+
+               htm='<tr>\n' +
+                   '    <th>Airline</th><th>Delay</th>\n' +
+                   '</tr>'
+               for (var o in res){
+
+                      airline=o
+                      delay=res[o]
+
+                      htm=htm+"<tr>"+"<td>"+o+"</td>"+"<td>"+delay+"</td>"+"</tr>"
+
+
+               }
+               $("#result").empty()
+               $("#result").append(htm)
+
+
+           },
+           error:function () {
+               alert('error')
+           }
+
+
+
+
+
+
+
+
+
+       })
+
+
+
+
+
+
+   }
+
+
+
+
+
+</script>
+</head>
+<body id="page1">
+<div class="body1">
+	<div class="main">
+<!-- header -->
+		<header>
+			<div class="wrapper">
+				<h1>
+					<a href="index.html" id="logo">Air Lines</a><span id="slogan">International Travel</span>
+				</h1>
+				<div class="right">
+					<nav>
+						<ul id="top_nav">
+							<li><a href="index.html"><img src="static/images/img1.gif" alt=""></a></li>
+							<li><a href="index-4.html"><img src="static/images/img2.gif" alt=""></a></li>
+							<li class="bg_none"><a href="#"><img src="static/images/img3.gif" alt=""></a></li>
+						</ul>
+					</nav>
+					<nav>
+
+					</nav>
+				</div>
+			</div>
+		</header>
+	</div>
+</div>
+<div class="main">
+	<div id="banner">
+		<div class="text1">
+			Accurately predict flight delay
+		</div>
+
+	</div>
+</div>
+<!-- / header -->
+<div class="main">
+<!-- content -->
+	<section id="content">
+		<article class="col1">
+			<div class="pad_1">
+				<h2>Predict flight delay</h2>
+				<form id="form_1" action="" method="post">
+
+					<div class="wrapper">
+						Leaving From:
+						<div class="bg"><input type="text" id="origin" class="input input1" value="Enter City or Airport Code" onBlur="if(this.value=='') this.value='Enter City or Airport Code'" onFocus="if(this.value =='Enter City or Airport Code' ) this.value=''"></div>
+					</div>
+					<div class="wrapper">
+						Going To:
+						<div class="bg"><input type="text" id="destination" class="input input1" value="Enter City or Airport Code" onBlur="if(this.value=='') this.value='Enter City or Airport Code'" onFocus="if(this.value =='Enter City or Airport Code' ) this.value=''"></div>
+					</div>
+					<div class="wrapper">
+						Departure Date and Time:
+						<div class="wrapper">
+							<div class="bg left"><input type="text" id="day" class="input input2" value="mm/dd/yyyy " onBlur="if(this.value=='') this.value='mm/dd/yyyy '" onFocus="if(this.value =='mm/dd/yyyy ' ) this.value=''"></div>
+							<div class="bg right"><input type="text" id="time" class="input input2" value="12:00am" onBlur="if(this.value=='') this.value='12:00am'" onFocus="if(this.value =='12:00am' ) this.value=''"></div>
+
+						</div>
+                        <a href="#" class="button2" onClick="send()">go!</a>
+
+					</div>
+
+
+				</form>
+
+			</div>
+		</article>
+        <div id="delay">
+  <table class="altrowstable" id="result">
+
+</table>
+        </div>
+
+
+
+	</section>
+<!-- / content -->
+</div>
+<div class="body2">
+	<div class="main">
+<!-- footer -->
+
+<!-- / footer -->
+	</div>
+</div>
+<script type="text/javascript"> Cufon.now(); </script>
+</body>
+</html>
