@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>fuck</title>
+<script>
+  src="https://code.jquery.com/jquery-2.2.4.js"
+  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+  crossorigin="anonymous">
+</script>
+ <script>
+    function submit() {
+       var time=$("#come").val()
+       var data={date:time}
+       alert(time)
+       $.ajax({
+
+           type: 'POST',
+           url: '/search',
+           data: data,
+
+           dataType: 'text',
+            success: function(data) {
+
+                alert("done")
+
+      },
+           error: function(xhr, type) {
+
+               alert("error")
+
+    }
+
+
+
+
+
+
+
+       })
+
+    }
+
+
+
+
+
+ </script>
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+date:
+<input type="date"  id="come">
+<input type="text", id="place">
+
+<input type="button" onclick="submit()">
+
+<h1>Hello {{ name }}!</h1>
+
+<img src='/graph'>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
