@@ -2,7 +2,7 @@ import socket
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-s.connect(('23.102.232.105', 9999))
+s.connect(('13.75.122.11', 9999))
 
 print(s.recv(1024))
 for data in ['airline_data']:

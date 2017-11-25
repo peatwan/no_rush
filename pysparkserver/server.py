@@ -1,27 +1,23 @@
-import findspark
-findspark.init()
-from pyspark import SparkContext
-from pyspark.sql import SparkSession
-from pyspark.sql.functions import *
 import socket
 import threading
 import time
 import json
+import test_prediction
 
-sc=SparkContext('local')
+# sc=SparkContext('local')
 
-spark = SparkSession \
-    .builder \
-    .appName('name') \
-    .config("spark.sql.shuffle.partitions",5) \
-    .getOrCreate()
+# spark = SparkSession \
+#     .builder \
+#     .appName('name') \
+#     .config("spark.sql.shuffle.partitions",5) \
+#     .getOrCreate()
 
 
-def reader(dir):
-    df=spark.read.csv(dir)
+# def reader(dir):
+#     df=spark.read.csv(dir)
 
-    col=list(df.toPandas.iloc[:3,0])
-    return col
+#     col=list(df.toPandas.iloc[:3,0])
+#     return col
 
 
 
@@ -49,6 +45,9 @@ def tcplink(sock,addr):
     print('handling new connection')
 
     while True:
+        input="BNA,4,20"
+        test_prediction.prediction(input)
+        print(sorted(result.items(),lambda x, y: cmp(x[1], y[1])))
         data = sock.recv(1024)
         data1=bytes.decode(data)
         result=parse_and_do(data1)
@@ -70,9 +69,9 @@ def tcplink(sock,addr):
 if __name__=='__main__':
 
 
-
-
+    
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    # s.bind(('127.0.0.1', 9999))
     s.bind(('10.0.0.5', 9999))
     s.listen(5)
     print('waiting for connections')

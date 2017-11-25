@@ -19,8 +19,8 @@ from pyspark.mllib.stat import Statistics
 from pyspark.ml.feature import OneHotEncoder, StringIndexer
 from pyspark.mllib.linalg import Vectors
 from pyspark.ml.feature import VectorAssembler
-from IPython.display import display
-from ipywidgets import interact
+# from IPython.display import display
+# from ipywidgets import interact
 from pyspark.sql.functions import *
 from pyspark.sql.functions import udf
 from pyspark.sql.types import IntegerType
@@ -39,6 +39,10 @@ import pickle
 
 
 models={}
+all_airlines=['AA','AS',"B6","F9","DL",'EV','HA','MQ','NK','OO',"UA","US","VX","WN"]
+sc = SparkContext("local",'app')
+spark = SparkSession.builder.appName('name').config('spark.sql.shuffle.partitions',10).getOrCreate()
+
 
 def init_model():
     all_airlines = ['AA', 'AS','B6',"F9","DL", 'EV', 'HA', 'MQ', 'NK', 'OO', "UA", "US", "VX", "WN"]
@@ -86,16 +90,19 @@ def prediction(input):
 
     return result
 
-if __name__ == "__main__":
+
+init_model()
+
+# if __name__ == "__main__":
+def ma():
 
 
+    # sc = SparkContext("local",'app')
+    # spark = SparkSession.builder.appName('name').config('spark.sql.shuffle.partitions',10).getOrCreate()
 
-    sc = SparkContext("local",'app')
-    spark = SparkSession.builder.appName('name').config('spark.sql.shuffle.partitions',10).getOrCreate()
+    # all_airlines=['AA','AS',"B6","F9","DL",'EV','HA','MQ','NK','OO',"UA","US","VX","WN"]
 
-    all_airlines=['AA','AS',"B6","F9","DL",'EV','HA','MQ','NK','OO',"UA","US","VX","WN"]
-
-    init_model()
+    # init_model()
     input="BNA,4,20"  #origin_airport+hours+minutes
     result=prediction(input)
     #lines=[origin_airport, airline, schedule_departure_hout,schedule_minute]
