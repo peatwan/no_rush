@@ -40,7 +40,9 @@ def parse_and_do(line):
     h=time.split(':')[0]
     min=time.split(':')[1]
     origin=string['origin']
+    print(origin+','+h+','+min)
     back=test_prediction.prediction(origin+','+h+','+min)
+    # back=test_prediction.ma()
 
     if method=='get':
           return back

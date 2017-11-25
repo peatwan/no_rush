@@ -51,9 +51,9 @@ def init_model():
         models[str(airline) + "_pipeline"] = pipeline
         model = LinearRegressionModel.load('model/'+str(airline) + "_model")
         models[str(airline) + "_model"] = model
-    airport_information=pickle.load(open("model/airport_information.pkl",'r'))
+    airport_information=pickle.load(open("model/airport_information.pkl",'rb'))
     models["airport"]=airport_information
-    print "load finish"
+    print("load finish")
 
 def prediction(input):
     input=input.split(",")
@@ -86,7 +86,7 @@ def prediction(input):
         temp_result = model.transform(dataset_transformed).select('prediction').rdd.map(
                 lambda element: element['prediction']).collect()
         result[airline]=np.array(temp_result).mean()
-        print airline,result[airline]
+        print(airline,result[airline])
 
     return result
 
@@ -106,6 +106,6 @@ def ma():
     input="BNA,4,20"  #origin_airport+hours+minutes
     result=prediction(input)
     #lines=[origin_airport, airline, schedule_departure_hout,schedule_minute]
-    print(sorted(result.items(),lambda x, y: cmp(x[1], y[1])))
+    # print(sorted(result.items(),lambda x, y: cmp(x[1], y[1])))
 
 
