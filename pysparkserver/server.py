@@ -35,8 +35,14 @@ def parse_and_do(line):
     string=json.loads(line)
 
     method=string['method']
-    if method=='get':
-        return {'AA':5,'BB':6}
+    time=string['time']
+    h=time.split(':')[0]
+    min=time.split(':')[1]
+    origin=string['origin']
+    back=prediction(origin+','+h+','+min)
+
+   if method=='get':
+          return back
 
 
 
