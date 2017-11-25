@@ -1,3 +1,6 @@
+# from pyspark import SparkContext
+# from pyspark.sql import SparkSession
+# from pyspark.sql.functions import *
 import socket
 import threading
 import time
@@ -37,9 +40,9 @@ def parse_and_do(line):
     h=time.split(':')[0]
     min=time.split(':')[1]
     origin=string['origin']
-    back=prediction(origin+','+h+','+min)
+    back=test_prediction.prediction(origin+','+h+','+min)
 
-   if method=='get':
+    if method=='get':
           return back
 
 
@@ -51,9 +54,6 @@ def tcplink(sock,addr):
     print('handling new connection')
 
     while True:
-        input="BNA,4,20"
-        test_prediction.prediction(input)
-        print(sorted(result.items(),lambda x, y: cmp(x[1], y[1])))
         data = sock.recv(1024)
         data1=bytes.decode(data)
         result=parse_and_do(data1)
@@ -75,9 +75,9 @@ def tcplink(sock,addr):
 if __name__=='__main__':
 
 
-    
+
+
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    # s.bind(('127.0.0.1', 9999))
     s.bind(('10.0.0.5', 9999))
     s.listen(5)
     print('waiting for connections')
