@@ -1,26 +1,27 @@
-from pyspark import SparkContext
-from pyspark.sql import SparkSession
-from pyspark.sql.functions import *
+# from pyspark import SparkContext
+# from pyspark.sql import SparkSession
+# from pyspark.sql.functions import *
 import socket
 import threading
 import time
 import json
 import numpy as np
 from collections import OrderedDict
-sc=SparkContext('local')
+import test_prediction
+# sc=SparkContext('local')
 
-spark = SparkSession \
-    .builder \
-    .appName('name') \
-    .config("spark.sql.shuffle.partitions",5) \
-    .getOrCreate()
+# spark = SparkSession \
+#     .builder \
+#     .appName('name') \
+#     .config("spark.sql.shuffle.partitions",5) \
+#     .getOrCreate()
 
 
-def reader(dir):
-    df=spark.read.csv(dir)
+# def reader(dir):
+#     df=spark.read.csv(dir)
 
-    col=list(df.toPandas.iloc[:3,0])
-    return col
+#     col=list(df.toPandas.iloc[:3,0])
+#     return col
 
 
 
@@ -67,7 +68,7 @@ def parse_and_do(line):
     h=time.split(':')[0]
     min=time.split(':')[1]
     origin=string['origin']
-    back=prediction(origin+','+h+','+min)
+    back=test_prediction.prediction(origin+','+h+','+min)
     back=dict_rank(back)
     back=tuple2json(back)
 
@@ -107,7 +108,7 @@ if __name__=='__main__':
 
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.bind(('127.0.0.1', 9999))
+    s.bind(('10.0.0.5', 9999))
     s.listen(5)
     print('waiting for connections')
     while True:
@@ -116,4 +117,5 @@ if __name__=='__main__':
 
       t = threading.Thread(target=tcplink, args=(sock, addr))
       t.start()
+
 
