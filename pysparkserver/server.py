@@ -7,7 +7,9 @@ import time
 import json
 import numpy as np
 from collections import OrderedDict
-import test_prediction
+import math
+import decimal
+#import test_prediction
 # sc=SparkContext('local')
 
 # spark = SparkSession \
@@ -23,7 +25,7 @@ import test_prediction
 #     col=list(df.toPandas.iloc[:3,0])
 #     return col
 
-
+import numpy as np
 
 def list2str(ls):
   pass
@@ -51,7 +53,16 @@ def tuple2json(tp):
     return json.dumps(dic)
 
 
-
+def deduct(di):
+    for k in di.keys():
+        num=di[k]
+        num=str(num)
+        points=num.split('.')[1]
+        points=points[:2]
+        num=num.split('.')[0]+'.'+points
+        num=float(num)
+        di[k]=num
+    return di
 
 
 
@@ -69,6 +80,7 @@ def parse_and_do(line):
     min=time.split(':')[1]
     origin=string['origin']
     back=test_prediction.prediction(origin+','+h+','+min)
+    back=deduct(back)
     back=dict_rank(back)
     back=tuple2json(back)
 
@@ -87,7 +99,7 @@ def tcplink(sock,addr):
         data = sock.recv(1024)
         data1=bytes.decode(data)
         result=parse_and_do(data1)
-        result=json.dumps(result)
+        #result=json.dumps(result)
         time.sleep(1)
         if data1 == 'done' or not data1:
             break
@@ -105,7 +117,7 @@ def tcplink(sock,addr):
 if __name__=='__main__':
 
 
-
+    '''
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind(('10.0.0.5', 9999))
@@ -117,5 +129,10 @@ if __name__=='__main__':
 
       t = threading.Thread(target=tcplink, args=(sock, addr))
       t.start()
-
+    '''
+    a={'BNA':-1.23767685,'AA':1.2567771,'CC':1.4345798,'DD':-1.345678}
+    a=deduct(a)
+    a=dict_rank(a)
+    a=tuple2json(a)
+    print(a)
 
